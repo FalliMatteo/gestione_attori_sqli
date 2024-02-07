@@ -1,9 +1,7 @@
 <?php
+    include "connection.php";
     session_start();
-    $connection = new mysqli("localhost", "root", "", "cinema");
-    if($connection->connect_error){
-        die($connection->connect_error);
-    }
+    $connection = connectMySQL();
     function insertActor($connection, $name, $birth_year, $nation){
         if($name != "" && $birth_year != 0 && $nation != ""){
             $sql = "INSERT INTO attori (Nome, AnnoNascita, Nazionalita) VALUES('$name', '$birth_year', '$nation')";

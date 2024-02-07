@@ -1,9 +1,7 @@
 <?php
+    include "connection.php";
     session_start();
-    $connection = new mysqli("localhost", "root", "", "cinema");
-    if($connection->connect_error){
-        die($connection->connect_error);
-    }
+    $connection = connectMySQL();
     function getActors($connection){
         try{
             $sql = "SELECT * FROM attori";
@@ -60,10 +58,10 @@
         <input type="submit" value="Esegui">
     </form>
     <?php
-        if($_SESSION["message"] != null){
-            echo "<br>" . $_SESSION["message"] . "<br>";
+        if(isset($_SESSION["message"])){
+            echo "<br><b>" . $_SESSION["message"] . "</b>";
         }
-        echo $list;
+        echo "<br>" . $list;
     ?>
     <script src="script.js"></script>
 </body>

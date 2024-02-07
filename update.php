@@ -1,9 +1,7 @@
 <?php
+    include "connection.php";
     session_start();
-    $connection = new mysqli("localhost", "root", "", "cinema");
-    if($connection->connect_error){
-        die($connection->connect_error);
-    }
+    $connection = connectMySQL();
     function updateActor($connection, $name, $nation){
         if($nation != "" && $name != ""){
             $sql = "UPDATE attori SET Nazionalita = '$nation' WHERE Nome = '$name'";
